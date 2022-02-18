@@ -1,0 +1,48 @@
+/* media */
+
+img,
+embed,
+object,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  padding: 0;
+}
+
+figcaption {
+  margin-top: var(--figcaption-flow);
+  font-weight: var(--figcaption-font-weight);
+  color: var(--figcaption-text-color);
+}
+
+img {
+  display: block;
+  border-style: none;
+  border-radius: var(--image-border-radius);
+  vertical-align: middle;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+video:focus {
+  outline: var(--outline-color, hsl(210, 100%, 85%)) solid
+    var(--outline-width, 0.2rem);
+}
+
+audio {
+  max-width: 100%;
+}
+
+iframe {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}

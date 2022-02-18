@@ -1,0 +1,20 @@
+/* block elements */
+
+/* paragraph spacing */
+p {
+  padding: 0;
+}
+
+/* address spacing */
+address {
+  font-style: normal;
+  line-height: inherit;
+}
+
+article > * {
+  max-width: 72ch;
+}
+
+article > * + * {
+  margin-top: var(--flow, 1rem);
+}

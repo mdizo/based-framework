@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/layout.astro'
+import Grid from '../layouts/Grid.astro'
+
+const colors = [
+  "tomato",
+  "red",
+  "crimson",
+  "pink",
+  "plum",
+  "purple",
+  "violet",
+  "indigo",
+  "blue",
+  "cyan",
+  "teal",
+  "green",
+  "grass",
+  "orange",
+  "brown",
+  "sky",
+  "mint",
+  "lime",
+  "yellow",
+  "gray",
+  "mauve",
+  "slate",
+  "sage",
+  "olive",
+  "sand",
+  "gold",
+  "bronze",
+];
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Welcome to Astro</title>
+	</head>
+
+	<body>
+		<Layout>
+			<h1>Colors</h1>
+			<p>These colors are used in this framework.</p>
+			{colors.map((color) => (
+				<section>
+					<h4>{color.charAt(0).toUpperCase() + color.slice(1)}</h4>
+					<div class="hues">
+						<div style={`--bg: var(--${color}-1)`}></div>
+						<div style={`--bg: var(--${color}-2)`}></div>
+						<div style={`--bg: var(--${color}-3)`}></div>
+						<div style={`--bg: var(--${color}-4)`}></div>
+						<div style={`--bg: var(--${color}-5)`}></div>
+						<div style={`--bg: var(--${color}-6)`}></div>
+						<div style={`--bg: var(--${color}-7)`}></div>
+						<div style={`--bg: var(--${color}-8)`}></div>
+						<div style={`--bg: var(--${color}-9)`}></div>
+						<div style={`--bg: var(--${color}-10)`}></div>
+						<div style={`--bg: var(--${color}-11)`}></div>
+						<div style={`--bg: var(--${color}-12)`}></div>
+					</div>
+				</section>
+			))}
+		</Layout>
+	</body>
+</html>
+
+<style>
+	h4 {
+		margin-bottom: var(--space-2xs);
+	}
+	.hues {
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		gap: 2px;
+	}
+	.hues > div {
+		height: var(--space-lg);
+		background-color: var(--bg, white);
+	}
+</style>

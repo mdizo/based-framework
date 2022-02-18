@@ -1,0 +1,150 @@
+/* buttons */
+@use "../mixins" as mixin;
+
+/* button mixin */
+@mixin button {
+  /* scoped properties */
+  --btn-height: var(--button-height, 2.25rem);
+  --btn-vertical-padding: var(--button-vertical-padding, 0);
+  --btn-horizontal-padding: var(--button-horizontal-padding, 1rem);
+  --btn-border-width: var(--button-border-width, 1px);
+  --btn-border-color: var(
+    --button-border-color,
+    var(--color-primary, hsl(210, 100%, 50%))
+  );
+  --btn-border-radius: var(
+    --button-border-radius,
+    var(--border-radius, 0.2rem)
+  );
+  --btn-background-color: var(
+    --button-background-color,
+    var(--color-primary, hsl(210, 100%, 50%))
+  );
+  --btn-font-weight: var(--button-font-weight, var(--font-weight-medium, 500));
+  --btn-text-color: var(--button-text-color, white);
+  --btn-hover-border-color: var(
+    --button-hover-border-color,
+    hsl(210, 100%, 40%)
+  );
+  --btn-hover-background-color: var(
+    --button-hover-background-color,
+    hsl(210, 100%, 40%)
+  );
+  --btn-hover-text-color: var(--button-hover-text-color, white);
+  --btn-focus-border-color: var(
+    --button-focus-border-color,
+    var(--button-hover-border-color, hsl(210, 100%, 40%))
+  );
+  --btn-focus-background-color: var(
+    --button-focus-background-color,
+    var(--button-hover-background-color, hsl(210, 100%, 40%))
+  );
+  --btn-focus-text-color: var(
+    --button-focus-text-color,
+    var(--button-hover-text-color, white)
+  );
+  --btn-active-border-color: var(
+    --button-active-border-color,
+    hsl(210, 100%, 30%)
+  );
+  --btn-active-background-color: var(
+    --button-active-background-color,
+    hsl(210, 100%, 30%)
+  );
+  --btn-active-text-color: var(--button-active-text-color, white);
+
+  /* remove default browser appearance */
+  @include mixin.is-controlled;
+
+  /* prevent button text from being selected */
+  @include mixin.is-unselectable;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: var(--btn-height);
+  margin: 0;
+  padding: var(--btn-vertical-padding) var(--btn-horizontal-padding);
+  border: var(--btn-border-width) solid var(--btn-border-color);
+  border-radius: var(--btn-border-radius);
+  background-color: var(--btn-background-color);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: var(--btn-font-weight);
+  line-height: inherit;
+  text-decoration: none;
+  color: var(--btn-text-color);
+  transition: border-color var(--speed, 0.1s) var(--easing, ease-out),
+    color var(--speed, 0.1s) var(--easing, ease-out),
+    background-color var(--speed, 0.1s) var(--easing, ease-out);
+  cursor: pointer;
+
+  &:hover,
+  &:visited:hover {
+    border-color: var(--btn-hover-border-color);
+    background-color: var(--btn-hover-background-color);
+    color: var(--btn-hover-text-color);
+  }
+
+  &:focus,
+  &:active {
+    outline: var(--outline-color, hsl(210, 100%, 85%)) solid
+      var(--outline-width, 0.2rem);
+  }
+
+  &:focus,
+  &:visited:focus {
+    border-color: var(--btn-focus-border-color);
+    background-color: var(--btn-focus-background-color);
+    color: var(--btn-focus-text-color);
+  }
+
+  &:active,
+  &:visited:active {
+    border-color: var(--btn-active-border-color);
+    background-color: var(--btn-active-background-color);
+    color: var(--btn-active-text-color);
+  }
+
+  /* force styling of text color if element has visited state (needed for `a` elements) */
+  &:visited {
+    color: var(--btn-text-color);
+  }
+
+  &:disabled,
+  &[aria-disabled] {
+    border-color: var(--disabled-border-color, transparent);
+    background-color: var(
+      --disabled-background-color,
+      var(--color-gray-7, hsl(220, 10%, 95%))
+    );
+    color: var(--disabled-text-color, var(--color-gray-5, hsl(220, 10%, 60%)));
+    cursor: not-allowed;
+  }
+}
+
+/*
+  apply mixin to:
+  1. `button` elements
+  2. elements with `.button` class (can be an `a` element)
+  3. elements with certain `type` attributes
+  */
+button,
+[role="button"],
+[type="button"],
+[type="submit"],
+[type="reset"],
+.button {
+  @include button;
+}
+
+/* styling file input button like a button */
+::-webkit-file-upload-button {
+  @include button;
+}
+
+/* future-proof disabling of clicks on `<a>` elements */
+fieldset[disabled] [role="button"] {
+  pointer-events: none;
+}

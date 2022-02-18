@@ -1,0 +1,8 @@
+/* selections */
+
+/* user selection color */
+::-moz-selection,
+::selection {
+  background-color: var(--selection-color, var(--primary-9));
+  text-shadow: none;
+}

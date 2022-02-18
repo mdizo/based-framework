@@ -1,0 +1,52 @@
+/* headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  font-weight: var(--heading-font-weight, var(--font-weight-medium, 500));
+  color: var(--neutral-12);
+}
+
+@mixin fontSize($size) {
+  font-size: var(--heading-#{$size}-size);
+}
+
+h1 {
+  @include fontSize(1);
+}
+
+h2 {
+  @include fontSize(2);
+}
+
+h3 {
+  @include fontSize(3);
+}
+
+h4 {
+  @include fontSize(4);
+}
+
+h5 {
+  @include fontSize(5);
+}
+
+h6 {
+  @include fontSize(6);
+}
+
+* + h1 {
+  --flow: var(--space-2xl);
+}
+
+* + h2 {
+  --flow: var(--space-xl);
+}
+
+* + h3 {
+  --flow: var(--space-lg);
+}

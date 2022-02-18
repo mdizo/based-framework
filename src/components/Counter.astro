@@ -1,0 +1,19 @@
+---
+import XElement from 'astro-xelement'
+
+const { Button, CounterComponent } = XElement
+---
+<CounterComponent>
+  <Button
+    @do={() => {
+      let count = 0;
+
+      this.onclick = () => {
+        counter_output.textContent = ++count
+      }
+    }}
+  >Increment</Button> <span id="counter_output">0</span>
+</CounterComponent>
+
+
+<!-- increments `counter_output` when clicked -->

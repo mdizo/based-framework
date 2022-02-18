@@ -1,0 +1,78 @@
+/* selector for non-writable inputs */
+@use "../../mixins" as mixin;
+
+@mixin not-writable {
+  &:disabled,
+  &[aria-disabled],
+  &[readonly] {
+    @content;
+  }
+}
+
+/* input mixin */
+@mixin input {
+  /* remove default browser appearance */
+  @include mixin.is-controlled;
+
+  margin: 0;
+  border: var(--input-border-width) solid var(--input-border-color);
+  border-radius: var(--input-border-radius);
+  background-color: var(--input-background-color);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: var(--font-weight-base, 400);
+  line-height: inherit;
+  color: var(--input-text-color);
+  transition: border-color var(--speed, 0.1s) var(--easing, ease-out),
+    color var(--speed, 0.1s) var(--easing, ease-out),
+    background-color var(--speed, 0.1s) var(--easing, ease-out);
+
+  &::placeholder {
+    color: var(--input-placeholder-color);
+  }
+
+  &:hover {
+    border-color: var(--input-hover-border-color);
+    background-color: var(--input-hover-background-color);
+    color: var(--input-hover-text-color);
+  }
+
+  &:focus {
+    border-color: var(--input-focus-border-color);
+    background-color: var(--input-focus-background-color);
+    outline: var(--outline-color, hsl(210, 100%, 85%)) solid
+      var(--outline-width, 0.2rem);
+    color: var(--input-focus-text-color);
+  }
+
+  @include not-writable {
+    border-color: var(
+      --disabled-border-color,
+      var(--color-gray-6, hsl(220, 10%, 90%))
+    );
+    background-color: var(
+      --disabled-background-color,
+      var(--color-gray-7, hsl(220, 10%, 95%))
+    );
+    color: var(--disabled-text-color, var(--color-gray-5, hsl(220, 10%, 60%)));
+
+    &::placeholder {
+      color: var(
+        --disabled-text-color,
+        var(--color-gray-5, hsl(220, 10%, 60%))
+      );
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:invalid:not(:focus) {
+    border-color: var(--input-invalid-border-color);
+  }
+
+  &:valid:not(:focus) {
+    border-color: var(--input-valid-border-color);
+  }
+}

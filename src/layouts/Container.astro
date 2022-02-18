@@ -1,0 +1,33 @@
+---
+const { style, isFluid } = Astro.props;
+let classList = ['container'];
+
+if (isFluid) {
+    classList.push('is-fluid');
+}
+---
+
+<style>
+.container {
+    /* scoped styles */
+    --gutter: var(--gap, var(--container-gutter));
+    --max-width: var(--cmw, var(--max-container-width));
+
+    width: calc(100% - (var(--gutter) * 2));
+    max-width: calc(var(--max-width) - (var(--gutter) * 2));
+    margin-right: auto;
+    margin-left: auto;
+    overflow-y: scroll;
+    height: 100vh;
+    padding: var(--space-2xl) var(--space-lg);
+}
+
+.container.is-fluid {
+    max-width: none;
+}
+
+</style>
+
+<div style={style} class={classList.join(' ')}>
+    <slot />
+</div>

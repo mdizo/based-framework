@@ -1,0 +1,41 @@
+$enable-darkmode: true;
+
+$ResponsiveWidth-min: 320;
+$ResponsiveWidth-max: 1140;
+
+$spacings: (
+  px: (
+    min: 16,
+    max: 24,
+  ),
+  sizes: (
+    4xs: 0.1,
+    3xs: 0.25,
+    2xs: 0.5,
+    xs: 0.75,
+    sm: 1,
+    md: 1.5,
+    lg: 2,
+    xl: 3,
+    2xl: 4,
+    3xl: 6,
+  ),
+  pairs: (
+    3xs 2xs,
+    2xs xs,
+    sm md,
+    md lg,
+    lg xl,
+    xl 2xl,
+    2xl 3xl,
+  ),
+);
+
+$fontsizes: (
+  min: 16,
+  max: 18,
+  minScale: 1.2,
+  maxScale: 1.25,
+  minStep: -2,
+  maxStep: 4,
+);

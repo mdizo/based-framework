@@ -1,0 +1,157 @@
+---
+import Container from '../layouts/Container.astro';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Welcome to Astro</title>
+		<link rel="stylesheet" href={Astro.resolve('../styles/based.scss')}>
+		<style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: grid;
+            place-content: center;
+        }
+        a {
+            text-decoration: none;
+        }
+
+        hr {
+            height: 1px;
+            color: var(--slate-5);
+            margin-top: var(--space-sm) !important;
+        }
+        .product-card {
+            width: 100%;
+            position: relative;
+            box-shadow: 0 2px 7px var(--slate-2);
+            background: var(--slate-3);
+            border: 1px solid var(--slate-7);
+            border-radius: var(--border-radius);
+        }
+
+        .badge {
+            position: absolute;
+            left: 0;
+            top: 20px;
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 700;
+            background: red;
+            color: #fff;
+            padding: 3px 10px;
+        }
+
+        .product-tumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-md);
+            background: #f0f0f0;
+            border-radius: var(--border-radius);
+            box-shadow: 2px 2px rgba(0,0,0,0.2);
+        }
+
+        .product-tumb img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .product-details {
+            padding: var(--space-sm) var(--space-sm);
+        }
+
+        .product-details > * + * {
+            margin-top: var(--space-2xs);
+        }
+
+        .product-catagory {
+            display: block;
+            font-size: var(--fsize--2);
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--slate-11);
+        }
+
+        .product-details h4 a {
+            font-size: var(--heading-5-size);
+            font-weight: 500;
+            display: block;
+            text-transform: uppercase;
+            color: var(--slate-12);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .product-details h4 a:hover {
+            color: #fbb72c;
+        }
+
+        .product-details p {
+            font-size: var(--fsize--1);
+            color: #999;
+        }
+
+        .product-bottom-details {
+            overflow: hidden;
+           display: flex;
+           justify-content: space-between;
+        }
+
+        .product-price {
+            font-size: var(--fsize-0);
+            color: #fbb72c;
+            font-weight: 600;
+            margin-top: var(--space-2xs);
+        }
+
+        .product-price small {
+            font-size: 80%;
+            font-weight: 400;
+            text-decoration: line-through;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .product-links {
+            text-align: right;
+        }
+
+        .product-links a {
+            display: inline-block;
+            margin-left: 5px;
+            color: #e1e1e1;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        .product-links a:hover {
+            color: #fbb72c;
+        }
+        </style>
+	</head>
+	
+	<body>
+		<Container style="--mw: 30rem">
+            <div class="product-card">
+                <div class="badge">Hot</div>
+                <div class="product-tumb">
+                    <img src="https://i.imgur.com/xdbHo4E.png" alt="">
+                </div>
+                <div class="product-details">
+                    <span class="product-catagory">Women,bag</span>
+                    <h4><a href="">Women leather bag</a></h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
+                    <hr>
+                    <div class="product-bottom-details">
+                        <div class="product-price"><small>$96.00</small>$230.99</div>
+                        <button class="button">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </Container>
+	</body>
+</html>

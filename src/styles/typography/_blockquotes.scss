@@ -1,0 +1,28 @@
+/* blockquotes */
+
+blockquote {
+  padding: 0;
+  color: var(--text-color);
+
+  p {
+    margin-bottom: 0;
+    font-size: var(--blockquote-font-size);
+    line-height: var(--blockquote-line-height);
+  }
+
+  cite {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--blockquote-citation-color);
+
+    &::before {
+      content: "\2014 \00A0"; /* em dash, nbsp */
+    }
+  }
+}
+
+/* citations */
+
+cite {
+  font-style: normal;
+}

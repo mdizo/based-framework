@@ -1,0 +1,52 @@
+html {
+  /* prevent adjustments of font size after orientation changes on some mobile devices */
+  -webkit-text-size-adjust: 100%;
+
+  /* text rendering */
+  text-rendering: var(--text-rendering, optimizeLegibility);
+
+  /* base font family */
+  font-family: var(
+    --font-family-base,
+    -apple-system,
+    system-ui,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif
+  );
+
+  /* base font size */
+  font-size: var(--font-size-base);
+
+  /* base font weight */
+  font-weight: var(--font-weight-base, var(--font-weight-normal, 400));
+
+  /* base letter spacing */
+  letter-spacing: var(--letter-spacing-base, 0);
+
+  /* base line height */
+  line-height: var(--line-height, 1.5);
+}
+
+/* allow text alignment to be inherited */
+body {
+  text-align: left;
+
+  -webkit-font-smoothing: antialiased;
+
+  /* text color */
+  color: var(--text-color);
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}

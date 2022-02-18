@@ -1,0 +1,12 @@
+/* datalists */
+@use "input" as *;
+
+input[list] {
+  @include input;
+
+  display: block;
+  width: 100%;
+  height: var(--input-height, 2.5rem);
+  padding: var(--input-padding-vertical, 0)
+    var(--input-padding-horizontal, 0.75rem);
+}

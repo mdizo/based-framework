@@ -1,0 +1,14 @@
+/* textareas */
+@use "input" as *;
+
+textarea {
+  @include input;
+
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: auto;
+  margin: 0;
+  padding: var(--textarea-padding-vertical) var(--textarea-padding-horizontal);
+  resize: vertical;
+}

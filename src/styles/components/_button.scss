@@ -1,0 +1,28 @@
+/* CSS */
+.button {
+  background-color: var(--blue-9);
+  border-radius: var(--border-radius);
+  border: 0;
+  box-shadow: var(--blue-10) 0 -1px 3px 0 inset,var(--blue-8) 0 3px 6px 0;
+  box-sizing: border-box;
+  color: var(--slate-12);
+  cursor: pointer;
+  display: inherit;
+  font-family: "Roboto",-apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: var(--fsize--1);
+  font-weight: 700;
+  margin: 0;
+  padding: var(--space-2xs) var(--space-xs);
+  position: relative;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  transition: all .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+.button:hover {
+  background-color: var(--blue-10);
+  transform: translateY(-2px);
+}

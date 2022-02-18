@@ -1,0 +1,27 @@
+@use "sass:meta";
+@use "../../settings";
+
+@use "light";
+@use "dark";
+@use "overlays";
+
+@mixin _generatePalette($theme) {
+  @each $color in meta.module-variables($theme) {
+    @each $hue in nth($color, 2) {
+      --#{nth($color, 1)}-#{nth($hue, 1)}: #{nth($hue, 2)};
+    }
+  }
+}
+
+:root {
+  @include _generatePalette("light");
+  @include _generatePalette("overlays");
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @if settings.$enable-darkmode {
+      @include _generatePalette("dark");
+    }
+  }
+}

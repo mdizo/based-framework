@@ -1,0 +1,108 @@
+/* ==========================================================================
+   Spacing Logic
+   ========================================================================== */
+
+/**
+ * Short description using Doxygen-style comment format
+ *
+ * The first sentence of the long description starts here and continues on this
+ * line for a while finally concluding here at the end of this paragraph.
+ *
+ * The long description is ideal for more detailed explanations and
+ * documentation. It can include example HTML, URLs, or any other information
+ * that is deemed necessary or useful.
+ *
+ * @tag This is a tag named 'tag'
+ *
+ * TODO: This is a todo statement that describes an atomic task to be completed
+ *   at a later date. It wraps after 80 characters and following lines are
+ *   indented by 2 spaces.
+ */
+
+//  Load settings
+@use "sass:math";
+@use "../settings" as *;
+$px: map-get($spacings, "px");
+
+// Main sizing logic
+@mixin _slope($name, $type) {
+  --#{$type}-#{$name}: calc(
+    ((var(--fluid-#{$name}-min) / 16) * 1rem) +
+      (var(--fluid-#{$name}-max) - var(--fluid-#{$name}-min)) * var(--fluid-bp)
+  );
+}
+
+@mixin _createSize($step) {
+  $exponentMin: math.pow(map-get($fontsizes, "minScale"), $step);
+  $exponentMax: math.pow(map-get($fontsizes, "maxScale"), $step);
+
+  --fluid-#{$step}-min: calc(
+    var(--fsize-min, #{map-get($fontsizes, "min")}) * #{$exponentMin}
+  );
+  --fluid-#{$step}-max: calc(
+    var(--fsize-max, #{map-get($fontsizes, "max")}) * #{$exponentMin}
+  );
+
+  @include _slope($step, "fsize");
+}
+
+// Create space size variable
+@mixin _createSpace($name, $factor) {
+  --fluid-#{$name}-min: (
+    var(--fluid-base-min) * var(--ratio-#{$name}, #{$factor})
+  );
+  --fluid-#{$name}-max: (
+    var(--fluid-base-max) * var(--ratio-#{$name}, #{$factor})
+  );
+
+  @include _slope($name, "space");
+}
+
+// Create pair size variable
+@mixin _createPair($from, $to) {
+  --space-#{$from}-#{$to}: calc(
+    ((var(--fluid-#{$from}-min) / 16) * 1rem) +
+      (var(--fluid-#{$to}-max) - var(--fluid-#{$from}-min)) * var(--fluid-bp)
+  );
+}
+
+:root {
+  // Set control widths variables
+  --fluid-min-width: #{$ResponsiveWidth-min};
+  --fluid-max-width: #{$ResponsiveWidth-max};
+
+  --fluid-screen: 100vw;
+  --fluid-bp: calc(
+    (var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) /
+      (var(--fluid-max-width) - var(--fluid-min-width))
+  );
+
+  --fluid-base-min: var(--fluid-space-min, #{map-get($px, "min")});
+  --fluid-base-max: var(--fluid-space-max, #{map-get($px, "max")});
+
+  // Generate font size variables
+  @for $step from map-get($fontsizes, 'minStep') through 0 {
+    @include _createSize($step);
+  }
+
+  @for $step from 1 through map-get($fontsizes, 'maxStep') {
+    @include _createSize($step);
+  }
+  
+
+  // Generate spacing variables
+  @each $size in map-get($spacings, "sizes") {
+    @include _createSpace(nth($size, 1), nth($size, 2));
+  }
+
+  @each $pair in map-get($spacings, "pairs") {
+    @include _createPair(nth($pair, 1), nth($pair, 2));
+  }
+}
+
+// Set width where sizes stop growing
+@media screen and (min-width: 1140px) {
+  :root {
+    --fluid-screen: calc(var(--fluid-max-width) * 1px);
+  }
+}

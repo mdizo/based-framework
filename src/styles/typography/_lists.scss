@@ -1,0 +1,65 @@
+/* lists */
+
+ol,
+ul {
+  /* scoped property */
+  --list-ml: var(--list-margin-left, 1rem);
+  padding: 0 0 0 var(--list-ml);
+}
+
+ul {
+  /* scoped property */
+  --ul-list-style: var(--unordered-list-style, disc);
+
+  list-style: var(--ul-list-style);
+}
+
+ul ul {
+  margin-top: 0;
+}
+
+/* spacing between nested lists */
+ul ul:last-child {
+  margin-bottom: var(--flow, var(--space-2sx, 1rem));
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin is-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.is-unstyled {
+  @include is-unstyled;
+}
+
+/* definition lists */
+
+dl {
+  padding: 0;
+}
+
+dt {
+  /* scoped property */
+  --dt-list-title-font-weight: var(
+    --description-list-title-font-weight,
+    var(--font-weight-semibold, 600)
+  );
+
+  margin: 0;
+  padding: 0;
+  font-weight: var(--dt-list-title-font-weight);
+}
+
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+dd + dt {
+  margin-top: var(--flow);
+}

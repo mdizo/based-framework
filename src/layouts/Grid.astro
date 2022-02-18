@@ -1,0 +1,33 @@
+---
+const { style, colGap, rowGap, cols, cellWidth } = Astro.props
+
+if (cols) { style + `--columns: ${cols};`}
+if (colGap) { style + `--col-gap:${colGap};` }
+if (rowGap) { style + `--row-gap:${rowGap};` }
+if (cellWidth) { style + `--cell-width:${cellWidth};` }
+---
+
+
+<div class="grid" style={style}>
+    <slot />
+</div>
+
+<style lang="scss">
+.grid {
+    /* scoped */
+ 
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--cell-width, 12), 1fr));
+    gap: var(--row-gap, 0) var(--col-gap, 0);
+}
+
+.grid > * {
+    display: block;
+    appearance: none;
+}
+
+.grid[style*="--columns:"] {
+    grid-template-columns: repeat(var(--columns, 12), 1fr);
+}
+</style>

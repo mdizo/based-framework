@@ -1,0 +1,14 @@
+/* details/summary */
+
+details {
+  margin-top: var(--flow, 1rem);
+}
+
+summary {
+  display: list-item;
+
+  &:focus {
+    outline: var(--outline-color, hsl(210, 100%, 85%)) solid
+      var(--outline-width, 0.2rem);
+  }
+}

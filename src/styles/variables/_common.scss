@@ -1,0 +1,302 @@
+@use "../mixins" as mixin;
+
+:root {
+  // COLORS
+
+  // Generated colors @ `src/styles/variables/colors/global.scss`
+
+  // Semantic colors
+  @include mixin.mapColor("primary", "blue", 12);
+  @include mixin.mapColor("success", "green", 12);
+  @include mixin.mapColor("warning", "amber", 12);
+  @include mixin.mapColor("danger", "red", 12);
+  @include mixin.mapColor("neutral", "slate", 12);
+
+  // Global colors
+  --html-background-color: var(--neutral-1);
+  --body-bacgkround-color: var(--neutral-1);
+  --disabled-background-color: var(--neutral-3);
+  --disabled-border-color: var(--neutral-8);
+  --disabled-text-color: var(--neutral-9);
+
+  // LAYOUT
+
+  // Containers
+  --max-container-width: 50rem;
+  --container-gutter: var(--space-md);
+
+  // Flow
+  --flow: var(--space-sm);
+
+  // Border & outline
+  --border-radius: 0.2rem;
+  --outline-width: 0.2rem;
+  --outline-color: var(--neutral-8);
+
+  // Transitions
+  --speed: 0.1s;
+  --easing: ease-out;
+
+  // TYPOGRAPHY
+
+  // Global type variables
+  --text-rendering: optimizeLegibility;
+  --letter-spacing: 0;
+
+  // Font families
+  --font-family-base: "InterVariable", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",
+    sans-serif;
+  --font-family-display: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
+
+  // Semantic Font Sizes
+  --heading-1-size: var(--fsize-4);
+  --heading-2-size: var(--fsize-3);
+  --heading-3-size: var(--fsize-2);
+  --heading-4-size: var(--fsize-1);
+  --heading-5-size: var(--fsize-0);
+  --heading-6-size: var(--fsize--1);
+
+  --font-size-base: var(--fsize-0);
+
+  // Base line height
+  --line-height-fixed: 0.5rem;
+  --line-height-relative: 1em;
+  --line-height: calc(var(--line-height-fixed) + var(--line-height-relative));
+
+  // Semantic font weights
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  // Applied font weights
+  --font-weight-base: var(--font-weight-normal);
+  --heading-font-weight: var(--font-weight-bold);
+  --description-list-title-font-weight: var(--font-weight-semibold);
+
+  // Text frame
+  --text-frame-ratio: 1.5;
+  --text-frame-y: var(--space-3xs);
+  --text-frame-x: calc(var(--text-frame-y) * var(--text-frame-ratio));
+  --text-frame: var(--text-frame-y) var(--text-frame-x);
+
+  // Global text color
+  --text-color: var(--neutral-11);
+
+  // Inline text elements
+  --mark-color: var(--neutral-9);
+  --deleted-color: var(--neutral-9);
+  --inserted-color: var(--neutral-9);
+
+  // User selection
+  --selection-color: var(--neutral-9);
+
+  // Lists
+  --list-margin-left: var(--space-sm);
+  --unordered-list-style: disc;
+
+  // Blockquotes
+  --blockquote-font-size: var(--fsize-1);
+  --blockquote-citation-color: var(--neutral-9);
+
+  // Horizontal rules
+  --horizontal-rule-height: 1px;
+  --horizontal-rule-color: var(--neutral-6);
+  --horizontal-rule-spacing: var(--space-xl);
+
+  // Links
+  --link-color: var(--primary-11);
+  --link-hover-color: var(--primary-9);
+  --link-active-color: var(--primary-11);
+  --link-text-decoration: none;
+
+  // Visited colors
+  --link-visited-color: var(--neutral-9);
+  --link-visited-hover-color: var(--link-hover-color);
+  --link-visited-active-color: var(--link-active-color);
+
+  // BUTTONS
+
+  --button-border-width: 1px;
+  --button-border-radius: var(--border-radius);
+  --button-font-weight: var(--font-weight-medium);
+
+  // Static colors
+  --button-border-color: var(--primary-9-9);
+  --button-background-color: var(--primary-9-6);
+  --button-text-color: white;
+
+  // Hover colors
+  --button-focus-border-color: var(--button-hover-border-color);
+  --button-focus-background-color: var(--button-hover-background-color);
+  --button-focus-text-color: var(--button-hover-text-color);
+
+  // Active colors
+  --button-active-border-color: hsl(210, 100%, 30%);
+  --button-active-background-color: hsl(210, 100%, 30%);
+  --button-active-text-color: white;
+
+  // CODE ELEMENTS
+
+  // Code
+  --code-text-frame: var(--space-4xs) var(--space-3xs);
+  --code-border-color: var(--neutral-6);
+  --code-font-size: var(--fsize--1);
+  --code-background-color: var(--neutral-2);
+  --code-text-color: var(--text-color);
+
+  // Pre
+  --pre-text-frame: var(--space-2xs);
+  --pre-border-color: var(--neutral-6);
+  --pre-background-color: var(--neutral-2);
+  --pre-text-color: var(--neutral-11);
+
+  // Kbd
+  --kbd-text-frame: var(--space-4xs) var(--space-3xs);
+  --kbd-border-color: var(--neutral-6);
+  --nested-kbd-font-weight: var(--font-weight-medium);
+  --kbd-background-color: transparent;
+  --kbd-text-color: var(--text-color);
+
+  // MEDIA / EMBED
+  --figcaption-flow: var(--space-2xs, 0.5rem);
+  --figcaption-font-weight: var(--font-weight-normal);
+  --figcaption-text-color: var(--neutral-10);
+  --image-border-radius: var(--border-radius);
+
+  // Table
+  --table-head-border-width: var(--table-cell-border-width);
+  --table-foot-border-width: var(--table-cell-border-width);
+  --table-caption-padding-vertical: 0.5rem;
+  --table-caption-text-color: var(--neutral-9);
+  --table-caption-font-weight: var(--font-weight-semibold);
+  --table-cell-padding-vertical: 0.5rem;
+  --table-cell-padding-horizontal: 0.75rem;
+  --table-cell-border-width: 1px;
+  --table-cell-border-color: var(--neutral-6);
+  --table-heading-background-color: transparent;
+  --table-heading-font-size: var(--fsize--1);
+  --table-heading-text-color: var(--neutral-9);
+  --table-heading-font-weight: var(--font-weight-bold, 700);
+
+  // FORMS & INPUTS
+
+  // Fieldsets
+  --fieldset-padding-vertical: 0;
+  --fieldset-padding-horizontal: 0;
+  --fieldset-border-width: 0;
+  --fieldset-border-color: transparent;
+  --fieldset-flow: var(--space-xs);
+
+  // Legends
+  --legend-font-weight: var(--font-weight-semibold);
+
+  // Labels
+  --label-font-weight: var(--font-weight-semibold);
+
+  // Input validation
+  --input-invalid-border-color: var(--danger-9);
+  --input-valid-border-color: var(--input-border-color);
+
+  // Text inputs
+  --input-border-width: 1px;
+  --input-border-radius: var(--border-radius);
+
+  // Static input colors
+  --input-border-color: var(--neutral-6);
+  --input-background-color: var(--neutral-3);
+  --input-text-color: var(--text-color);
+  --input-placeholder-color: var(--neutral-4);
+
+  // Hover input colors
+  --input-hover-border-color: var(--input-border-color);
+  --input-hover-background-color: var(--input-background-color);
+  --input-hover-text-color: var(--input-text-color);
+
+  // Focus input colors
+  --input-focus-border-color: var(--input-border-color);
+  --input-focus-background-color: var(--input-background-color);  
+  --input-focus-text-color: var(--input-text-color);
+
+  // textareas
+  --textarea-padding-vertical: 0.5rem;
+  --textarea-padding-horizontal: 0.75rem;
+
+  // selects
+  --select-background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2230px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2030%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%3E%0A%20%20%20%20%3Cg%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate%28-137.000000%2C%20-145.000000%29%22%20fill%3D%22%23000000%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolygon%20points%3D%22152%20161%20137%20145%20167%20145%22%3E%3C/polygon%3E%0A%20%20%20%20%20%20%20%20%3C/g%3E%0A%20%20%20%20%3C/g%3E%0A%3C/svg%3E");
+  --select-background-position: right 1rem center;
+  --select-background-size: 0.75rem;
+  --select-multiple-checked-background-color: var(--primary-9);
+  --select-multiple-padding-vertical: 0.75rem;
+  --select-text-frame: var(--text-frame);
+
+  // checkboxes
+  --checkbox-label-padding-horizontal: 2rem;
+  --checkbox-label-font-weight: var(--font-weight-normal);
+  --checkbox-width: 1rem;
+  --checkbox-height: 1rem;
+  --checkbox-border-width: 1px;
+  --checkbox-border-color: transparent;
+  --checkbox-border-radius: var(--border-radius);
+  --checkbox-background-color: var(--neutral-6);
+  --checkbox-hover-background-color: var(--neutral-5);
+  --checkbox-focus-background-color: var(--neutral-5);
+  --checkbox-checked-border-color: var(--primary-9);
+  --checkbox-checked-background-color: var(--primary-9);
+  --checkbox-check-width: 0.25rem;
+  --checkbox-check-height: 0.5rem;
+  --checkbox-check-border-width: 2px;
+  --checkbox-check-color: white;
+  --checkbox-indeterminate-width: 0.5rem;
+
+  // radio buttons
+  --radio-label-padding-horizontal: 2rem;
+  --radio-label-font-weight: var(--font-weight-normal);
+  --radio-width: 1rem;
+  --radio-height: 1rem;
+  --radio-border-width: 1px;
+  --radio-border-color: transparent;
+  --radio-border-radius: 50%;
+  --radio-background-color: var(--neutral-6);
+  --radio-hover-background-color: var(--neutral-5);
+  --radio-focus-background-color: var(--neutral-5);
+  --radio-checked-border-color: var(--primary-9);
+  --radio-checked-background-color: var(--primary-9);
+  --radio-check-width: 0.5rem;
+  --radio-check-height: 0.5rem;
+  --radio-check-border-radius: 50%;
+  --radio-check-background-color: white;
+
+  // range inputs
+  --range-input-thumb-width: 1.5rem;
+  --range-input-thumb-height: 1.5rem;
+  --range-input-thumb-border-radius: 50%;
+  --range-input-thumb-background-color: var(--primary-9);
+  --range-input-thumb-disabled-background-color: var(--neutral-6);
+  --range-input-track-height: 0.5rem;
+  --range-input-track-border-radius: var(--border-radius);
+  --range-input-track-background-color: var(--neutral-6);
+
+  // color inputs
+  --color-input-background-color: var(--neutral-6);
+
+  // PROGRESS / METER
+
+  // meters
+  --meter-background-color: var(--neutral-6);
+  --meter-strong-color: var(--success);
+  --meter-good-color: var(--warning);
+  --meter-weak-color: var(--danger);
+
+  // progress
+  --progress-height: 1rem;
+  --progress-background-color: var(--neutral-6);
+  --progress-filled-color: var(--primary-9);
+
+  // dialogs
+  --dialog-border-radius: var(--border-radius);
+}

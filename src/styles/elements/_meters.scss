@@ -1,0 +1,47 @@
+/* meter elements */
+
+meter {
+  width: 100%;
+  border: 0;
+  background: var(--meter-background-color);
+  appearance: none;
+
+  &::-webkit-meter-inner-element {
+    display: block;
+  }
+
+  &::-webkit-meter-bar {
+    height: 1rem;
+    border: 0;
+    border-radius: 0;
+    background: var(--meter-background-color);
+  }
+
+  &::-moz-meter-bar {
+    background: var(--meter-background-color);
+  }
+
+  &::-webkit-meter-optimum-value {
+    background: var(--meter-strong-color);
+  }
+
+  &:-moz-meter-optimum::-moz-meter-bar {
+    background: var(--meter-strong-color);
+  }
+
+  &::-webkit-meter-suboptimum-value {
+    background: var(--meter-good-color);
+  }
+
+  &:-moz-meter-sub-optimum::-moz-meter-bar {
+    background: var(--meter-good-color);
+  }
+
+  &::-webkit-meter-even-less-good-value {
+    background: var(--meter-weak-color);
+  }
+
+  &:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+    background: var(--meter-weak-color);
+  }
+}

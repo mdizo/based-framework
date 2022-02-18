@@ -1,0 +1,44 @@
+/* selects */
+@use "input" as *;
+
+select {
+  @include input;
+
+  display: block;
+  width: 100%;
+  padding: var(--select-text-frame);
+
+  &:not([multiple]) {
+    /* if select does not have `multiple` attribute it receives a caret on the right-hand side */
+    background-image: var(--select-background-image);
+    background-repeat: no-repeat;
+    background-position: var(--select-background-position);
+    background-size: var(--select-background-size);
+  }
+
+  &[multiple] {
+    height: auto;
+    padding-top: var(--select-multiple-padding-vertical);
+    padding-bottom: var(--select-multiple-padding-vertical);
+
+    & option {
+      padding: 0.125rem 0.5rem;
+
+      &:checked {
+        background: var(--select-multiple-checked-background-color) -webkit-linear-gradient(bottom, var(
+                --select-multiple-checked-background-color
+              )
+              0%, var(--select-multiple-checked-background-color) 100%);
+      }
+    }
+  }
+}
+
+/* grouping of options within `select` element */
+
+optgroup {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}

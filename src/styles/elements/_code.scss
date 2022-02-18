@@ -1,0 +1,77 @@
+/* code */
+@use "../mixins" as mixin;
+
+code,
+kbd,
+pre,
+samp {
+  font-size: var(--code-font-size);
+  font-family: var(
+    --font-family-monospace,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Courier New",
+    monospace
+  );
+}
+
+code {
+  padding: var(--code-text-frame);
+  border-radius: var(--border-radius, 0.2rem);
+  background-color: var(--code-background-color);
+  white-space: pre;
+  color: var(--code-text-color);
+}
+
+*:not(pre) > code {
+  border: 1px solid var(--code-border-color);
+}
+
+/* inherit styles from `a` element if code is within */
+a code {
+  padding: 0;
+  border: 0;
+  background-color: inherit;
+  color: inherit;
+}
+
+kbd {
+  padding: var(--text-frame);
+  border: 1px solid var(--kbd-border-color);
+  border-radius: var(--border-radius, 0.2rem);
+  background-color: var(--kbd-background-color);
+  color: var(--kbd-text-color);
+
+  /* remove padding and increase font weight if `kbd` is nested within another `kbd` */
+  & kbd {
+    padding: 0;
+    border: 0;
+    font-weight: var(--nested-kbd-font-weight);
+  }
+}
+
+pre {
+  /* enable "momentum-based scrolling on touch devices when content overflows */
+  @include mixin.overflow-touch;
+
+  overflow-x: auto;
+  padding: var(--pre-text-frame);
+  border: 1px solid var(--pre-border-color);
+  border-radius: var(--border-radius, 0.2rem);
+  background-color: var(--pre-background-color);
+  tab-size: 1.5rem;
+  white-space: pre-wrap;
+  word-wrap: normal;
+  color: var(--pre-text-color);
+
+  /* reset and inherit styles from `pre` if code is contained within */
+  & code {
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+    font-size: inherit;
+    white-space: pre-wrap;
+    color: inherit;
+  }
+}

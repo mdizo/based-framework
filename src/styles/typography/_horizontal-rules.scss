@@ -1,0 +1,24 @@
+/* horizontal rules */
+
+hr {
+  /* scoped properties */
+  --hr-height: var(--horizontal-rule-height, 1px);
+  --hr-color: var(--horizontal-rule-color, var(--neutral-6));
+  --hr-spacing: var(--horizontal-rule-spacing, var(--flow, 2rem));
+
+  box-sizing: content-box;
+  height: var(--hr-height);
+  overflow: visible;
+  padding: 0;
+  border: 0;
+  background-color: var(--hr-color);
+}
+
+* + hr {
+  margin-top: var(--hr-spacing) !important;
+}
+
+hr + * {
+  --hr-spacing: var(--horizontal-rule-spacing, var(--flow, 2rem));
+  margin-top: var(--hr-spacing) !important;
+}

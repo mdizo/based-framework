@@ -1,0 +1,61 @@
+---
+import '@fontsource/inter/variable.css'
+import '../styles/based.scss'
+import Container from '../layouts/Container.astro'
+import Header from '../components/Header.astro'
+import Sidebar from '../components/Sidebar.astro'
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Welcome to Astro</title>
+	</head>
+
+	<body>
+
+        <main>
+            <Sidebar></Sidebar>
+
+                
+                    <article>
+                        <slot />
+                    </article>
+            
+
+        </main>
+    </body>
+</html>
+
+<style>
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-xl);
+        position: fixed;
+        width: 100%;
+    }
+
+    main > :first-child {
+        flex-grow: 1;
+        flex-basis: 32ch;
+        border-right: 1px solid var(--neutral-6);
+    }
+
+    main > :last-child {
+        flex-basis: 0;
+        flex-grow: 999;
+        min-width: 60%;
+    }
+
+    article {
+        height: 100vh;
+        overflow-y: scroll;
+        padding: var(--space-2xl) var(--space-md);
+    }
+
+    article > * {
+        max-width: 40ch;
+    }
+</style>

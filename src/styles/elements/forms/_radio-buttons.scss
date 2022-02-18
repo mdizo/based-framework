@@ -1,0 +1,92 @@
+/* radio buttons */
+@use "input";
+
+.radio {
+  position: relative;
+
+  & label {
+    position: relative;
+    margin-bottom: var(--radio-margin-bottom);
+    padding: 0 var(--radio-label-padding-horizontal);
+    font-weight: var(--radio-label-font-weight) !important;
+    line-height: 1;
+    cursor: pointer;
+    user-select: none;
+
+    /* style `::before` to look like radio button */
+    &::before {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--radio-width);
+      height: var(--radio-height);
+      border: var(--radio-border-width) solid var(--radio-border-color);
+      border-radius: var(--radio-border-radius);
+      background-color: var(--radio-background-color);
+      transition: background-color var(--speed, 0.2s) var(--easing, ease-out);
+      content: "";
+    }
+  }
+
+  /* visually hide input */
+  & input[type="radio"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    &:hover + label::before {
+      background-color: var(--radio-hover-background-color);
+    }
+
+    &:focus + label::before {
+      background-color: var(--radio-focus-background-color);
+      outline: var(--outline-color) solid var(--outline-width, 0.2rem);
+    }
+
+    &:checked + label::before,
+    &[aria-checked] + label::before {
+      border-color: var(--radio-checked-border-color);
+      background-color: var(--radio-checked-background-color);
+    }
+
+    /* style `::after` to look like radio button fill */
+    &:checked + label::after,
+    &[aria-checked] + label::after {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: calc(var(--radio-width) / 2);
+      width: var(--radio-check-width);
+      height: var(--radio-check-height);
+      border-radius: var(--radio-check-border-radius);
+      background-color: var(--radio-check-background-color);
+      transform: translate(-50%, -50%);
+      content: "";
+    }
+
+    @include input.not-writable {
+      & + label {
+        color: var(--disabled-text-color, var(--neutral-5));
+        cursor: not-allowed;
+
+        &::before {
+          background-color: var(--disabled-background-color, var(--neutral-7));
+        }
+      }
+    }
+
+    &:disabled,
+    &[aria-disabled] {
+      cursor: not-allowed;
+    }
+  }
+}
+
+.radio + .radio {
+  margin-top: var(--radio-flow, var(--space-2xs, 0.5rem));
+}

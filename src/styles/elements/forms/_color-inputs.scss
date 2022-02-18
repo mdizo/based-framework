@@ -1,0 +1,33 @@
+/* color inputs */
+
+input[type="color"] {
+  padding: 0;
+  border: 0;
+  border-radius: 0.2rem;
+  background: var(--color-input-background-color);
+  appearance: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: var(--outline-color) solid var(--outline-width, 0.2rem);
+  }
+
+  &:disabled,
+  &[aria-disabled] {
+    cursor: not-allowed;
+  }
+
+  &::-webkit-color-swatch-wrapper {
+    padding: 0.25rem;
+  }
+
+  &::-webkit-color-swatch {
+    border: 0;
+    border-radius: 0.1rem;
+  }
+
+  &::-moz-color-swatch {
+    border: 0;
+    border-radius: 0.1rem;
+  }
+}
